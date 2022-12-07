@@ -5,7 +5,7 @@ int main()
     int n, i;
     scanf("%d", &n);
     int *ptr;
-    ptr = (int *)malloc(n * sizeof(int));
+    ptr = (int *)malloc(n * sizeof(int)); // ptr=(int*) calloc(n,sizeof(int));
 
     for (i = 0; i < n; i++)
     {
@@ -16,5 +16,6 @@ int main()
     {
         printf("%d \n", *(ptr + i));
     }
+    free(ptr);
     return 0;
 }
