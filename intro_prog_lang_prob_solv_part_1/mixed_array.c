@@ -1,50 +1,62 @@
 #include <stdio.h>
-int prime_numbers(int nums[], int n)
+int isPrime(int num[], int n)
 {
-    int i, j, count = 0;
+    int i, prime = 0, count, j;
     for (i = 0; i < n; i++)
     {
-        for (j = 2; j < *(nums + i); j++)
+        count = 0;
+        if (*(num + i) == 1)
         {
-            if (*(nums + i) % j == 0)
+            count = 1;
+        }
+        else
+        {
+            for (j = 2; j < *(num + i); j++)
             {
-                count++;
+                count = 0;
+                if (*(num + i) % j == 0)
+                {
+                    count = 1;
+                    break;
+                }
             }
         }
-    }
-    return count;
-}
-float even_average(int nums[], int n)
-{
-    int sum = 0, count = 0, i, res;
-    for (i = 0; i < n; i++)
-    {
-        if (*(nums + i) % 2 == 0)
+
+        if (count == 0)
         {
-            sum = sum + *(nums + i);
-            count++;
+            prime++;
         }
     }
-    if (count == 0)
+    return prime;
+}
+float totalEven(int even[], int n)
+{
+    int i, j, count = 0, sum = 0;
+    double avg;
+
+    for (i = 0; i < n; i++)
     {
-        count = 1;
+        if (*(even + i) % 2 == 0)
+        {
+            count++;
+            sum += *(even + i);
+        }
     }
-    res = sum / count;
-    return res;
+    avg = sum / count;
+    return (avg);
 }
 int main()
 {
-    int n, i, prime;
-    float avg;
-    int nums[100];
+    int n, num[100], i, prime;
+    float even;
     scanf("%d", &n);
+
     for (i = 0; i < n; i++)
     {
-        scanf("%d", &nums[i]);
+        scanf("%d", &num[i]);
     }
-    prime = prime_numbers(nums, n);
-    avg = even_average(nums, n);
-    printf("Prime numbers: %d\n", prime);
-    printf("Average of all even integers: %.2f\n", avg);
-    return 0;
+    prime = isPrime(num, n);
+    printf("Prime numbers:%d\n", prime);
+    even = totalEven(num, n);
+    printf("Average of all even integers:%0.2lf", even);
 }
