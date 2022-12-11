@@ -5,8 +5,9 @@ void solve(int i, int n)
     {
         return;
     }
-    printf("%d ", n);
+
     solve(i, n - 1);
+    printf("%d ", n);
 }
 
 int main()
