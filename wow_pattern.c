@@ -1,0 +1,33 @@
+#include <stdio.h>
+int main()
+{
+    int n, i, j, k, count = 1;
+    scanf("%d", &n);
+    for (i = 1; i <= n; i++)
+    {
+
+        for (k = i; k < n; ++k)
+        {
+            printf(" ");
+        }
+        for (j = 1; j <= (i * 2) - 1; j++)
+        {
+            if (i % 2 != 0)
+                printf("^");
+            else
+                printf("*");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+/*
+out put be like that-
+     ^
+    ***
+   ^^^^^
+  *******
+ ^^^^^^^^^
+***********
+*/
